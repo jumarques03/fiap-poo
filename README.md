@@ -29,7 +29,7 @@ Antes de alterar o estado da TV, é feita uma **validação do estado atual da t
 
 ---
 
-### 🔊 `aumentarVolume(boolean estadoTV, int volumeDesejado)`
+### `aumentarVolume(boolean estadoTV, int volumeDesejado)`
 
 Esse método controla o **volume da televisão**.
 
