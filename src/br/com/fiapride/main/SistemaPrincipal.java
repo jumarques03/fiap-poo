@@ -16,7 +16,7 @@ public class SistemaPrincipal {
         televisao01.ligarTelevisao(televisao01.estaLigada);
         televisao01.aumentarVolume(televisao01.estaLigada, 27);
 
-        System.out.println("--- Televisão 02 ---");
+        System.out.println("\n--- Televisão 02 ---");
         televisao02.ligarTelevisao(televisao02.estaLigada);
         televisao02.aumentarVolume(televisao02.estaLigada, 0);
 
