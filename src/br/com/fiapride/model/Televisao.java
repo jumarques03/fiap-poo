@@ -1,43 +1,67 @@
 package br.com.fiapride.model;
 
 public class Televisao {
-    public int volume;
-    public int numeroCanal;
-    public boolean estaLigada;
+    private int volume;
+    private int numeroCanal;
+    private boolean estaLigada;
 
-    // def __init__ em Python
     public Televisao(int volume, int numeroCanal) {
-        this.volume = volume;
-        this.numeroCanal = numeroCanal;
-        this.estaLigada = false;
-
+        this.setVolume(volume);
+        this.setNumeroCanal(numeroCanal);
+        this.setEstaLigada(false);;
     }
 
-    // def ligarTevelisao(estadoTV: boolean) em Python
-    public void ligarTelevisao(boolean estadoTV) {
-        if (!estadoTV) {
-            this.estaLigada = true;
-            System.out.println("Televisão ligada!");
-            return;
-        }
-
-        this.estaLigada = false;
-        System.out.println("Você desligou a televisão! Ela já estava ligada.");
+    public int getVolume() { 
+        return this.volume; 
     }
 
-    // def aumentarVolume(estadoTV: boolean) em Python
-    public void aumentarVolume(boolean estadoTV, int volumeDesejado) {
-        if (estadoTV) {
-            if (volumeDesejado <= 0 || volumeDesejado >= 100) {
-                System.out.println("O volume deve ser um valor entre 0 a 100");
-                return;
-            }
+    public int getNumeroCanal() { 
+        return this.numeroCanal; 
+    
+    }
+    
+    public boolean getEstaLigada() { 
+        return this.estaLigada; 
+    }
 
+    private void setVolume(int volumeDesejado) {
+        if (volumeDesejado >= 0 && volumeDesejado <= 100) {
             this.volume = volumeDesejado;
-            System.out.println("Volume aumentado para: " + this.volume);
-            return;
+        } else {
+            System.out.println("ERRO: Volume " + volumeDesejado + " inválido.");
         }
+    }
 
-        System.out.println("A televisão está desligada! Ligue-a para conseguir aumentar o volume.");
+    private void setNumeroCanal(int numeroCanal) {
+        if (numeroCanal > 0) {
+            this.numeroCanal = numeroCanal;
+        }
+    }
+
+    private void setEstaLigada(boolean estaLigada) {
+        this.estaLigada = estaLigada;
+    }
+
+    public void ligar() {
+        if (!estaLigada) {
+            setEstaLigada(true);
+            System.out.println("Televisão ligada!");
+        }
+    }
+
+    public void desligar() {
+        if (estaLigada) {
+            setEstaLigada(false);
+            System.out.println("Televisão desligada.");
+        }
+    }
+
+    public void ajustarVolume(int novoVolume) {
+        if (estaLigada) {
+            setVolume(novoVolume);
+            System.out.println("Volume ajustado para: " + this.volume);
+        } else {
+            System.out.println("ERRO: TV desligada.");
+        }
     }
 }
