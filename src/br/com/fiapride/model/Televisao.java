@@ -1,23 +1,27 @@
 package br.com.fiapride.model;
 
 public class Televisao {
+    private String marca;
+    private double tamanhoPolegadas;
     private int volume;
-    private int numeroCanal;
     private boolean estaLigada;
 
-    public Televisao(int volume, int numeroCanal) {
-        this.setVolume(volume);
-        this.setNumeroCanal(numeroCanal);
-        this.setEstaLigada(false);;
+    public Televisao(String marca, double tamanhoPolegadas) {
+        // Esses dois atributos não precisam de setters pois devem ser definidos apenas uma vez (no momento de criação do objeto)
+        this.marca = marca;
+        this.tamanhoPolegadas = tamanhoPolegadas;
+        this.setEstaLigada(false);
+    }
+
+    public String getMarca() { 
+        return this.marca; 
+    }
+    public double getTamanhoPolegadas() { 
+        return this.tamanhoPolegadas; 
     }
 
     public int getVolume() { 
         return this.volume; 
-    }
-
-    public int getNumeroCanal() { 
-        return this.numeroCanal; 
-    
     }
     
     public boolean getEstaLigada() { 
@@ -29,12 +33,6 @@ public class Televisao {
             this.volume = volumeDesejado;
         } else {
             System.out.println("ERRO: Volume " + volumeDesejado + " inválido.");
-        }
-    }
-
-    private void setNumeroCanal(int numeroCanal) {
-        if (numeroCanal > 0) {
-            this.numeroCanal = numeroCanal;
         }
     }
 
