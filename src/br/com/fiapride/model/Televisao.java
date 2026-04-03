@@ -5,6 +5,7 @@ public class Televisao {
     private double tamanhoPolegadas;
     private int volume;
     private boolean estaLigada;
+    private Canal canalAtual;
 
     public Televisao(String marca, double tamanhoPolegadas) {
         // Esses dois atributos não precisam de setters pois devem ser definidos apenas uma vez (no momento de criação do objeto)
@@ -28,11 +29,16 @@ public class Televisao {
         return this.estaLigada; 
     }
 
+    public Canal getCanalAtual() {
+        return canalAtual;  // Tem que acessar esse método para conseguir acessar os atributos da classe Canal
+    }
+
     private void setVolume(int volumeDesejado) {
         if (volumeDesejado >= 0 && volumeDesejado <= 100) {
             this.volume = volumeDesejado;
         } else {
             System.out.println("ERRO: Volume " + volumeDesejado + " inválido.");
+            return;
         }
     }
 
@@ -60,6 +66,15 @@ public class Televisao {
             System.out.println("Volume ajustado para: " + this.volume);
         } else {
             System.out.println("ERRO: TV desligada.");
+        }
+    }
+
+    public void sintonizarCanal(Canal novoCanal) {
+        if (estaLigada) {
+            this.canalAtual = novoCanal;
+            System.out.println("Sintonizado no canal: " + novoCanal.getNome() + " (nº " + novoCanal.getNumero() + ")");
+        } else {
+            System.out.println("ERRO: Não é possível mudar de canal com a TV desligada.");
         }
     }
 }
