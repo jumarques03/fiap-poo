@@ -8,29 +8,29 @@ public class SmartTV extends Televisao {
     public SmartTV(String marca, double tamanhoPolegadas, String sistemaOperacional, String tipoConexaoInternet) {
         super(marca, tamanhoPolegadas);
         this.setTipoConexaoInternet(tipoConexaoInternet);
-        // Não precisa de setter pois deve ser definido apenas uma vez (no momento de criação da classe)
         this.sistemaOperacional = sistemaOperacional;    
     }
 
     private void setTipoConexaoInternet(String tipoConexaoInternet) {
         String conexao = tipoConexaoInternet.toLowerCase().trim();
-        
         if (conexao.equals("wifi") || conexao.equals("wi-fi")) {
             this.tipoConexaoInternet = "Wi-Fi";
         } else if (conexao.equals("cabo")) {
             this.tipoConexaoInternet = "Cabo";
         } else {
-            System.out.println("ERRO: Tipo de conexão '" + tipoConexaoInternet + "' inválido. Use Wi-Fi ou Cabo.");
-            return;
+            System.out.println("ERRO: Tipo de conexão '" + tipoConexaoInternet + "' inválido.");
         }
     }
 
-    public String getTipoConexaoInternet() {
-        return this.tipoConexaoInternet;
-    }
+    public String getTipoConexaoInternet() { return this.tipoConexaoInternet; }
+    public String getSistemaOperacional() { return this.sistemaOperacional; }
 
-    public String getSistemaOperacional () {
-        return this.sistemaOperacional;
+    @Override
+    public void ligar() {
+        super.ligar();
+        if (getEstaLigada()) {
+            System.out.println("Sistema operacional " + sistemaOperacional + " iniciado.");
+            System.out.println("Conectado via " + tipoConexaoInternet + ".");
+        }
     }
-
 }

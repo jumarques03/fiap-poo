@@ -8,29 +8,18 @@ public class Televisao {
     private Canal canalAtual;
 
     public Televisao(String marca, double tamanhoPolegadas) {
-        // Esses dois atributos não precisam de setters pois devem ser definidos apenas uma vez (no momento de criação do objeto)
         this.marca = marca;
         this.tamanhoPolegadas = tamanhoPolegadas;
         this.setEstaLigada(false);
     }
 
-    public String getMarca() { 
-        return this.marca; 
-    }
-    public double getTamanhoPolegadas() { 
-        return this.tamanhoPolegadas; 
-    }
-
-    public int getVolume() { 
-        return this.volume; 
-    }
-    
-    public boolean getEstaLigada() { 
-        return this.estaLigada; 
-    }
+    public String getMarca() { return this.marca; }
+    public double getTamanhoPolegadas() { return this.tamanhoPolegadas; }
+    public int getVolume() { return this.volume; }
+    public boolean getEstaLigada() { return this.estaLigada; }
 
     public Canal getCanalAtual() {
-        return canalAtual;  // Tem que acessar esse método para conseguir acessar os atributos da classe Canal
+        return canalAtual;
     }
 
     private void setVolume(int volumeDesejado) {
@@ -38,7 +27,6 @@ public class Televisao {
             this.volume = volumeDesejado;
         } else {
             System.out.println("ERRO: Volume " + volumeDesejado + " inválido.");
-            return;
         }
     }
 
@@ -46,10 +34,10 @@ public class Televisao {
         this.estaLigada = estaLigada;
     }
 
+    // Alterado de String para void
     public void ligar() {
         if (!estaLigada) {
             setEstaLigada(true);
-            System.out.println("Televisão ligada!");
         }
     }
 
